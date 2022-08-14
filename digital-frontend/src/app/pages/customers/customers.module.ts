@@ -11,6 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import {CartComponent} from "./components/cart/cart.component";
+import {CartService} from "./service/cart.service";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -25,11 +28,14 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     HeaderComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
     CustomersRoutingModule,
+    FormsModule,
+
   ],
   bootstrap: [CustomersComponent],
   exports:[

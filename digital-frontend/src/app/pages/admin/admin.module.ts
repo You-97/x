@@ -6,6 +6,7 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { ProductsComponent } from './products/products.component';
 import { KeysComponent } from './keys/keys.component';
 import { OrdersComponent } from './orders/orders.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,9 +16,10 @@ import { OrdersComponent } from './orders/orders.component';
     KeysComponent,
     OrdersComponent,
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        FormsModule
+    ]
 })
 export class AdminModule { }
