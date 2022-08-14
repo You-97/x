@@ -1,0 +1,68 @@
+
+// application de vente des produits digital
+
+--> Netflix
+--> Spotify
+--> Windows
+--> Microsoft
+
+add new keys in data base
+
+select product :
+
+Key {
+    email : String
+    password : String
+    productKey : String
+    valid : Boolean
+    validityTime: Date
+}
+
+Product {
+    id: long;
+    name: String;
+    type: String; { MICROSOFT, NETFLIX, WINDOWS, SPOTIFY, AMAZON ... }
+    imagePath: String;
+    price: Double;
+}
+
+get order --> payment --> send keys.
+
+user select products and quantity for each product. Send request to backend with email and products.
+
+Request {
+    email
+    productId
+    productType
+    price
+
+}
+
+each product (productId) associate with a key : productId have many key
+
+getAllSimpleKeysByProductId(product: String, productId: Long, qte: Long);
+
+getAllCompositeKeysByProductId(product: String, productId: Long, qte: Long);
+
+Response for netflix & spotify ... :
+[
+    {
+        email: "",
+        password: ""
+    },
+    {
+        email: "",
+        password: ""
+    }
+]
+
+or for windows and microsoft
+
+[
+    "",
+    "",
+    ""
+]
+
+
+

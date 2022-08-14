@@ -1,0 +1,308 @@
+<div
+  class="d-flex justify-content-between px-4 py-3"
+  style="margin: 30px 0 20px 0; border: solid 2px #ddd"
+>
+  <h1>Products</h1>
+  <button (click)="onCreateProduct()" class="btn btn-primary">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-plus-lg"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+      />
+    </svg>
+  </button>
+</div>
+
+<div *ngIf="!conditionProduct" class="table-responsive">
+  <table class="table" style="table-layout: fixed">
+    <thead>
+      <tr class="bg-gray">
+        <th scope="col">ID</th>
+        <th scope="col">Image</th>
+        <th scope="col">NAME</th>
+        <th scope="col">TYPE</th>
+        <th scope="col">PRICE</th>
+        <th scope="col">ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="v-align">
+        <th scope="row">1</th>
+        <td>
+          <img
+            src="./../assets/about_us.jpg"
+            style="border-radius: 50%"
+            width="40"
+            height="40"
+            alt=""
+          />
+        </td>
+        <td>Otto</td>
+        <td>Otto</td>
+        <td>Otto</td>
+        <td>
+          <button
+            class="btn btn-primary mx-1 py-1 px-2"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-trash"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+              />
+            </svg>
+          </button>
+          <button
+            class="btn btn-info mx-1 py-1 px-2"
+            data-bs-toggle="modal"
+            data-bs-target="#editModal"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-pencil-square"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+              />
+            </svg>
+          </button>
+          <button
+            class="btn btn-danger mx-1 py-1 px-2"
+            data-bs-toggle="modal"
+            data-bs-target="#keyModal"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-filetype-key"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM3.21 11.85h-.87L.83 13.64H.79v-1.79H0v3.999h.791v-1.283l.41-.466 1.12 1.749h.951l-1.488-2.276 1.427-1.723Zm2.903 3.352h-1.79v-1.073h1.685v-.606H4.323v-1.025h1.79v-.648H3.538v3.999h2.575v-.647Zm2.243-.888v1.535h-.794v-1.52L6.223 11.85H7.1l.853 1.696h.032l.855-1.696h.856l-1.339 2.464Z"
+              />
+            </svg>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="conditionProduct" class="mt-5">
+  <div class="d-flex justify-content-center">
+    <h4>Add new product</h4>
+  </div>
+  <hr />
+  <form>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        aria-describedby="productNameHelper"
+      />
+      <div *ngIf="false" id="productNameHelper" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">price</label>
+      <input type="number" class="form-control" id="price" />
+    </div>
+    <div class="mb-3">
+      <label for="type" class="form-label">product type</label>
+      <select id="type" class="form-select">
+        <option value="netflix">Netflix</option>
+        <option value="windows">Windows</option>
+        <option value="microsoft">Microsoft</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="ProductImage" class="form-label">Product Image</label>
+      <input type="file" class="form-control" id="ProductImage" />
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
+<div
+  class="modal fade"
+  id="editModal"
+  tabindex="-1"
+  aria-labelledby="editModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">
+          Update Product Informations
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              aria-describedby="productNameHelper"
+            />
+            <div *ngIf="false" id="productNameHelper" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">price</label>
+            <input type="number" class="form-control" id="price" />
+          </div>
+          <div class="mb-3">
+            <label for="type" class="form-label">product type</label>
+            <select id="type" class="form-select">
+              <option value="netflix">Netflix</option>
+              <option value="windows">Windows</option>
+              <option value="microsoft">Microsoft</option>
+            </select>
+          </div>
+          <div class="mb-3 text-center">
+            <img
+              src="./../assets/about_us.jpg"
+              width="150"
+              height="150"
+              alt=""
+            />
+          </div>
+          <div class="mb-3">
+            <label for="ProductImage" class="form-label">Product Image</label>
+            <input type="file" class="form-control" id="ProductImage" />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="keyModal"
+  tabindex="-1"
+  aria-labelledby="keyModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="keyModalLabel">
+          Link a key to the product (ID:1)
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="Email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="Email" />
+          </div>
+          <div class="mb-3">
+            <label for="Password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="Password" />
+          </div>
+          <div class="mb-3">
+            <label for="key" class="form-label">product key</label>
+            <input type="text" class="form-control" id="key" />
+          </div>
+          <div class="mb-3">
+            <label for="validityTime" class="form-label">Validity time</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="number of validity months"
+              id="validityTime"
+            />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="deleteModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">
+          Link a key to the product (ID:1)
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete the product with name : "NAME" and identifier 1
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          No
+        </button>
+        <button type="button" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
