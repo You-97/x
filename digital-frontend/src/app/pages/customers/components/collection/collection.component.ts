@@ -10,7 +10,7 @@ import {CartService} from "../../service/cart.service";
 })
 export class CollectionComponent implements OnInit {
 /*kolchi mn back end abro product 3la hsab type dyalo ID */
-  public products : any = [["1,./../../../assets/images/blog_1.jpg","MICROS0FT 0FFICE PROFESSIONAL Plus 2019 Download Link For Win(1PC/1User)","$ 45.50","add to bag","special"],["2,./../../../assets/images/blog_1.jpg","MICROS0FT 0FFICE PROFESSIONAL Plus 2019 Download Link For Win(1PC/1User)","$ 45.50","add to bag","special"]];
+  public products : any = [["1","./../../../assets/images/img_2.png","Microsoft Office 2019 Professional Plus key online activation",18.99,"special",0,99.99],["2","./../../../assets/images/img_3.png","Microsoft Office Home & Business 2019 for Mac",59.76,"special",0,59.99],["1","./../../../assets/images/img_4.png","Microsoft Office Home & Business 2021 for Mac – Retail Key",45.99,"special",0,249.99],["2","./../../../assets/images/img_5.png","Microsoft Office Home and Business 2016 for Mac",119.89,"special",0,299.99]];
   public idAttr : any ="special" ;
   public class : any =["Special","Microsoft","Netflix","Windows","Spotify","Deezer","AmazonPrime"]
   public activeCouleur: any="active-filter-btn";
@@ -30,8 +30,9 @@ export class CollectionComponent implements OnInit {
 
   }
 
-  addtocart(item: any){
+  addtocart(item: any, i: number){
     this.cartService.addtoCart(item);
+    this.products[i][5]=1;
   }
 
 

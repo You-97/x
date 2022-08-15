@@ -43,7 +43,7 @@
 
       <div  class="mt-4 row gx-0 gy-3" >
         <div class="col-md-6 col-lg-4 col-xl-3 p-2 " *ngFor="let item of products ; let i = index">
-          <div *ngIf="item[5]==idAttr">
+          <div *ngIf="item[4]==idAttr">
             <div class="special-img position-relative">
             <img
               src="{{item[1]}}"
@@ -53,11 +53,12 @@
           </div>
             <div class="text-center">
             <p class="text-capitalize my-1">
-              {{item[2]}}
+              ${{item[2]}}
             </p>
-            <span class="d-block fw-bold">{{item[3]}}</span>
+              <span class="d-block fw-bold" style="color: #F93154 !important">${{item[6]}}</span>
+              <span class="d-block fw-bold">${{item[3]}}</span>
              <!-- //hna khas ndiro API l product selecte daba tantsana l back end ikhdam -->
-            <a (click)=addtocart(item) class="btn m-2" id="{{i}}">{{item[4]}}</a>
+            <button (click)=addtocart(item,i) [disabled]="item[5]" class="btn m-2" id="{{i}}">Add to bag</button>
           </div>
           </div>
         </div>
