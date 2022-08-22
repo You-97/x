@@ -7,7 +7,8 @@ import {CartService} from "../../service/cart.service";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  totalItem : number = 5;
+
+  totalItem: number = 0;
 
   constructor(public cartService: CartService ) { }
 
@@ -17,5 +18,11 @@ export class NavbarComponent implements OnInit {
         this.totalItem = res.length;
       })
   }
+
+  onClick() {
+    this.totalItem += 1;
+  }
+
+
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import 'jquery';
 import {NavbarComponent} from "../navbar/navbar.component";
 import {CartService} from "../../service/cart.service";
+import { ProductInterface } from '../../service/product.interface';
 
 @Component({
   selector: 'app-collection',
@@ -10,7 +11,80 @@ import {CartService} from "../../service/cart.service";
 })
 export class CollectionComponent implements OnInit {
 /*kolchi mn back end abro product 3la hsab type dyalo ID */
-  public products : any = [["1","./../../../assets/images/img_2.png","Microsoft Office 2019 Professional Plus key online activation",18.99,"special",0,99.99],["2","./../../../assets/images/img_3.png","Microsoft Office Home & Business 2019 for Mac",59.76,"special",0,59.99],["1","./../../../assets/images/img_4.png","Microsoft Office Home & Business 2021 for Mac – Retail Key",45.99,"special",0,249.99],["2","./../../../assets/images/img_5.png","Microsoft Office Home and Business 2016 for Mac",119.89,"special",0,299.99]];
+  public products : ProductInterface[] = [
+    {
+      id:"1",
+      image:"./../../../assets/images/img_1.png",
+      title:"Microsoft Office 2019 Professional Plus key online activation",
+      price:18.99,
+      category:"special",
+      x:0,
+      oldPrice:99.99
+    },
+    {
+      id:"1",
+      image:"./../../../assets/images/img_3.png",
+      title:"Microsoft Office 2019 Professional Plus key online activation",
+      price:18.99,
+      category:"special",
+      x:0,
+      oldPrice:99.99
+    },
+    {
+      id:"1",
+      image:"./../../../assets/images/img_2.png",
+      title:"Microsoft Office 2019 Professional Plus key online activation",
+      price:18.99,
+      category:"special",
+      x:0,
+      oldPrice:99.99
+    },
+    {
+      id:"1",
+      image:"./../../../assets/images/img_4.png",
+      title:"Microsoft Office 2019 Professional Plus key online activation",
+      price:18.99,
+      category:"special",
+      x:0,
+      oldPrice:99.99
+    },
+    {
+      id:"2",
+      image:"./../../../assets/images/img_1.png",
+      title:"Microsoft Office 2019 Professional Plus key online activation",
+      price:18.99,
+      category:"special",
+      x:0,
+      oldPrice:99.99
+    },
+    {
+      id:"3",
+      image:"./../../../assets/images/img_2.png",
+      title:"Microsoft Office 2019 Professional Plus key online activation",
+      price:18.99,
+      category:"special",
+      x:0,
+      oldPrice:99.99
+    },
+    {
+      id:"4",
+      image:"./../../../assets/images/img_3.png",
+      title:"Microsoft Office 2019 Professional Plus key online activation",
+      price:18.99,
+      category:"special",
+      x:0,
+      oldPrice:99.99
+    },
+    {
+      id:"1",
+      image:"./../../../assets/images/img_5.png",
+      title:"Microsoft Office 2019 Professional Plus key online activation",
+      price:18.99,
+      category:"special",
+      x:0,
+      oldPrice:99.99
+    }
+  ];
   public idAttr : any ="special" ;
   public class : any =["Special","Microsoft","Netflix","Windows","Spotify","Deezer","AmazonPrime"]
   public activeCouleur: any="active-filter-btn";
@@ -30,9 +104,9 @@ export class CollectionComponent implements OnInit {
 
   }
 
-  addtocart(item: any, i: number){
+  addtocart(item: ProductInterface){
     this.cartService.addtoCart(item);
-    this.products[i][5]=1;
+    //this.products[i].x = 1;
   }
 
 

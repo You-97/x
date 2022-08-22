@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ProductInterface } from './product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +8,11 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
 
   public cartItemList : any =[]
-  public productList = new BehaviorSubject<any>([]);
+  public productList = new BehaviorSubject<ProductInterface[]>([]);
   public search = new BehaviorSubject<string>("");
 
   constructor() { }
+
   getProducts(){
     return this.productList.asObservable();
   }
@@ -19,11 +21,14 @@ export class CartService {
     this.cartItemList.push(...product);
     this.productList.next(product);
   }
-  addtoCart(product : any){
+
+  addtoCart(product : ProductInterface){
     this.cartItemList.push(product);
     this.productList.next(this.cartItemList);
+    console.log(this.productList);
     this.getTotalPrice();
   }
+
   getTotalPrice() : number{
     let grandTotal = 0;
     this.cartItemList.map((a:any)=>{
@@ -31,6 +36,7 @@ export class CartService {
     })
     return grandTotal;
   }
+
   removeCartItem(product: any){
     this.cartItemList.map((a:any, index:any)=>{
       if(product.id=== a.id){
@@ -39,6 +45,7 @@ export class CartService {
     })
     this.productList.next(this.cartItemList);
   }
+
   removeAllCart(){
     this.cartItemList = []
     this.productList.next(this.cartItemList);

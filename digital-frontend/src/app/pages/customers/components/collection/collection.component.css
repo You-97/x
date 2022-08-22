@@ -1,3 +1,26 @@
 .green {
   background-color: green;
 }
+
+.dash {
+  text-decoration: line-through;
+  text-decoration-color: brown;
+}
+
+li {
+  list-style: none;
+  font-size: 23px;
+  margin: 4px 0 4px 0;
+}
+
+.accordion-button {
+  border: 0;
+  outline: 0;
+}
+
+.accordion-button:active,
+.accordion-button:focus,
+.accordion-button:hover{
+  outline: none !important;
+  box-shadow: none;
+}
