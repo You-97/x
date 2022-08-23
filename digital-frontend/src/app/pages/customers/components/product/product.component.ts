@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {CartService} from "../../service/cart.service";
+import { ProductInterface } from '../../types/product.interface';
 import {CollectionComponent} from "../collection/collection.component";
 
 @Component({
@@ -17,13 +18,26 @@ export class ProductComponent implements OnInit {
   paymentEmail: boolean = false;
 
   //value from input
-  product :any;
+  product :ProductInterface = {
+    id: 0,
+    image: '',
+    title: '',
+    price: 0,
+    category: '',
+    description: '',
+    oldPrice: 0
+  };
 
   constructor(public cartService: CartService) { }
 
   ngOnInit(): void {
-    this.product=this.cartService.getProduct();
-    console.log(this.product);
+    this.product = this.cartService.getProduct();
+    this.initializeData();
+  }
+
+  initializeData(): void {
+    this.products = 1;
+    this.subTotal = this.products * this.product.price;
   }
 
   addProduct(){

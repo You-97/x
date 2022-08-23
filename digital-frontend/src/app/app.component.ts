@@ -11,4 +11,13 @@ export class AppComponent {
   saveChanges(event: string) {
     this.title = event;
   }
+
+  /* onActivate(event: any) {
+
+    window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+     });
+  } */
 }

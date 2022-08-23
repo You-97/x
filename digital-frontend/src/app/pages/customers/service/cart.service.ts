@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ProductInterface } from './product.interface';
+import { ProductInterface } from '../types/product.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  public productSelect : any =[]
+  public productSelect : ProductInterface = {
+    id: 0,
+    image: '',
+    title: '',
+    price: 0,
+    category: '',
+    description: '',
+    oldPrice: 0
+  }
   public cartItemList : any =[]
   public productList = new BehaviorSubject<ProductInterface[]>([]);
   public search = new BehaviorSubject<string>("");
@@ -27,8 +35,8 @@ export class CartService {
     this.productList.next(product);
   }
 
-  selectProduct(product : any) {
-    this.productSelect=product;
+  selectProduct(product : ProductInterface) {
+    this.productSelect = product;
   }
 
   addtoCart(product : ProductInterface){

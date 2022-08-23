@@ -1,4 +1,4 @@
-<section id="collection" class="py-5">
+<section id="collection" style="padding-top: 104px">
   <div class="container py-5">
     <div class="title text-center">
       <h2 class="position-relative d-inline-block">Microsoft Products</h2>
@@ -12,7 +12,13 @@
         >
           <div>
             <div class="special-img position-relative">
-              <img (click)="itemParametre(item)" src="{{ item.image }}" class="w-100" height="250" routerLink="/product" >
+              <img
+                (click)="itemParametre(item)"
+                src="{{ item.image }}"
+                class="w-100"
+                height="250"
+                routerLink="/product"
+              />
             </div>
             <div class="text-center">
               <p class="text-capitalize my-1">${{ item.title }}</p>
@@ -361,8 +367,6 @@
     </div>
   </div>
 
-
-
   <div class="py-5">
     <div class="container">
       <div class="title text-center mb-5">
@@ -389,6 +393,4 @@
       </ul>
     </div>
   </div>
-
-
 </section>
