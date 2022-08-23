@@ -16,6 +16,9 @@ import {CartService} from "./service/cart.service";
 import {FormsModule} from "@angular/forms";
 import { ActionsComponent } from './components/actions/actions.component';
 import { ProductComponent } from './components/product/product.component';
+import {ContactusComponent} from "./components/contactus/contactus.component";
+import {PrivacypolicyComponent} from "./components/privacypolicy/privacypolicy.component";
+import {FreequentlyqstComponent} from "./components/fandq/freequentlyqst.component";
 
 
 
@@ -33,7 +36,10 @@ import { ProductComponent } from './components/product/product.component';
     FooterComponent,
     CartComponent,
     ActionsComponent,
-    ProductComponent
+    ProductComponent,
+    ContactusComponent,
+    PrivacypolicyComponent,
+    FreequentlyqstComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +51,8 @@ import { ProductComponent } from './components/product/product.component';
   exports:[
     HeaderComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CollectionComponent
   ]
 })
 export class CustomersModule { }

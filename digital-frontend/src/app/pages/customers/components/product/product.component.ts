@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {CartService} from "../../service/cart.service";
+import {CollectionComponent} from "../collection/collection.component";
 
 @Component({
   selector: 'app-product',
@@ -14,15 +16,19 @@ export class ProductComponent implements OnInit {
   purshase: boolean = true;
   paymentEmail: boolean = false;
 
-  constructor() { }
+  //value from input
+  product :any;
+
+  constructor(public cartService: CartService) { }
 
   ngOnInit(): void {
-    this.subTotal = this.price;
+    this.product=this.cartService.getProduct();
+    console.log(this.product);
   }
 
   addProduct(){
     this.products += 1;
-    this.subTotal = this.products * this.price;
+    this.subTotal = this.products * this.product.price;
   }
 
   popProduct() {

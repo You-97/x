@@ -4,6 +4,7 @@ export interface ProductInterface {
     title:string,
     price:number,
     category:string,
+    description:string,
     x:number,
     oldPrice:number
 }

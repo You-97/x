@@ -7,11 +7,16 @@ import { ProductInterface } from './product.interface';
 })
 export class CartService {
 
+  public productSelect : any =[]
   public cartItemList : any =[]
   public productList = new BehaviorSubject<ProductInterface[]>([]);
   public search = new BehaviorSubject<string>("");
 
   constructor() { }
+
+  getProduct(){
+    return this.productSelect;
+  }
 
   getProducts(){
     return this.productList.asObservable();
@@ -22,10 +27,13 @@ export class CartService {
     this.productList.next(product);
   }
 
+  selectProduct(product : any) {
+    this.productSelect=product;
+  }
+
   addtoCart(product : ProductInterface){
     this.cartItemList.push(product);
     this.productList.next(this.cartItemList);
-    console.log(this.productList);
     this.getTotalPrice();
   }
 

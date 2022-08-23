@@ -5,6 +5,10 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CustomersComponent } from './customers.component';
 import { HomeComponent } from './home/home.component';
 import {CartComponent} from "./components/cart/cart.component";
+import {ContactusComponent} from "./components/contactus/contactus.component";
+import {PrivacypolicyComponent} from "./components/privacypolicy/privacypolicy.component";
+import {FreequentlyqstComponent} from "./components/fandq/freequentlyqst.component";
+import {ProductComponent} from "./components/product/product.component";
 
 const routes: Routes = [
   {
@@ -26,6 +30,22 @@ const routes: Routes = [
       {
         path:"cart",
         component: CartComponent
+      },
+      {
+        path:"contactus",
+        component: ContactusComponent
+      },
+      {
+        path:"privacypolicy",
+        component: PrivacypolicyComponent
+      },
+      {
+        path:"freequentlyqst",
+        component: FreequentlyqstComponent
+      },
+      {
+        path:"product",
+        component: ProductComponent
       },
       {
         path:"",
