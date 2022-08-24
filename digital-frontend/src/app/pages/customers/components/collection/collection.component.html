@@ -14,14 +14,14 @@
             <div class="special-img position-relative">
               <img
                 (click)="itemParametre(item)"
-                src="{{ item.image }}"
+                src="{{ item?.productImagePath }}"
                 class="w-100"
                 height="250"
                 routerLink="/product"
               />
             </div>
             <div class="text-center">
-              <p class="text-capitalize my-1">${{ item.title }}</p>
+              <p class="text-capitalize my-1">{{ item.name }}</p>
               <span
                 class="d-block fw-bold dash"
                 style="color: #f93154 !important"

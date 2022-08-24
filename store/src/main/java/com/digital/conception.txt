@@ -6,16 +6,13 @@
 --> Windows
 --> Microsoft
 
-add new keys in data base
-
-select product :
-
 Key {
     email : String
     password : String
     productKey : String
     valid : Boolean
     validityTime: Date
+    price: Double
 }
 
 Product {
@@ -23,7 +20,6 @@ Product {
     name: String;
     type: String; { MICROSOFT, NETFLIX, WINDOWS, SPOTIFY, AMAZON ... }
     imagePath: String;
-    price: Double;
 }
 
 get order --> payment --> send keys.

@@ -33,20 +33,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="v-align">
+      <tr class="v-align" *ngFor="let item of products">
         <th scope="row">1</th>
         <td>
           <img
-            src="./../assets/about_us.jpg"
+            src="{{ item?.productImagePath }}"
             style="border-radius: 50%"
             width="40"
             height="40"
             alt=""
           />
         </td>
-        <td>Otto</td>
-        <td>Otto</td>
-        <td>Otto</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.price }}</td>
         <td>
           <button
             class="btn btn-primary mx-1 py-1 px-2"
@@ -122,12 +122,18 @@
     <h4>Add new product</h4>
   </div>
   <hr />
-  <form>
+  <form
+    #newProductForm="ngForm"
+    (ngSubmit)="onCreateNewProduct(newProductForm)"
+    enctype="multipart/form-data"
+  >
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
       <input
         type="text"
         class="form-control"
+        name="name"
+        ngModel
         id="name"
         aria-describedby="productNameHelper"
       />
@@ -137,19 +143,60 @@
     </div>
     <div class="mb-3">
       <label for="price" class="form-label">price</label>
-      <input type="number" class="form-control" id="price" />
+      <input
+        type="number"
+        ngModel
+        class="form-control"
+        name="price"
+        id="price"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="oldPrice" class="form-label">old price</label>
+      <input
+        type="number"
+        ngModel
+        class="form-control"
+        name="oldPrice"
+        id="oldPrice"
+      />
     </div>
     <div class="mb-3">
       <label for="type" class="form-label">product type</label>
-      <select id="type" class="form-select">
+      <select name="type" ngModel id="type" class="form-select">
         <option value="netflix">Netflix</option>
         <option value="windows">Windows</option>
         <option value="microsoft">Microsoft</option>
       </select>
     </div>
     <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Description</label
+      >
+      <textarea
+        name="description"
+        ngModel
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="4"
+      ></textarea>
+    </div>
+    <div class="mb-3">
       <label for="ProductImage" class="form-label">Product Image</label>
-      <input type="file" class="form-control" id="ProductImage" />
+      <input
+        type="file"
+        ngModel
+        accept="image/*"
+        name="image"
+        class="form-control"
+        id="ProductImage"
+        (change)="
+          onProductImageChange(
+            $any($event).target.files[0].name,
+            $any($event).target.files[0]
+          )
+        "
+      />
     </div>
     <div class="text-center">
       <button type="submit" class="btn btn-primary">Submit</button>

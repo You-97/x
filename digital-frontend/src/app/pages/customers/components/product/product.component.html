@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-8 rounded mt-2">
         <div class="bg-light p-4">
-          <h4>{{product.title}}</h4>
+          <h4>{{ product.name }}</h4>
           <div
             class="d-flex justify-content-between"
             style="margin: 4px 0 4px 0"
@@ -28,16 +28,12 @@
           </div>
           <div class="row">
             <div class="col-lg-5">
-              <img
-                src="{{product.image}}"
-                class="img-fluid"
-                alt=""
-              />
+              <img src="{{ product.image }}" class="img-fluid" alt="" />
             </div>
             <div class="col-lg-7 p-2">
               <p>Description</p>
               <p>
-                {{product.description}}
+                {{ product.description }}
               </p>
               <p>Testing</p>
             </div>

@@ -8,10 +8,10 @@
 		<version>2.7.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.store</groupId>
-	<artifactId>store</artifactId>
+	<groupId>com.digital</groupId>
+	<artifactId>digital</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>store</name>
+	<name>digital</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -68,14 +68,6 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>16</source>
-					<target>16</target>
 				</configuration>
 			</plugin>
 		</plugins>

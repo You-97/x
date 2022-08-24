@@ -9,12 +9,13 @@ export class CartService {
 
   public productSelect : ProductInterface = {
     id: 0,
-    image: '',
-    title: '',
+    image: undefined,
+    name: '',
     price: 0,
     category: '',
     description: '',
-    oldPrice: 0
+    oldPrice: 0,
+    productImagePath: ''
   }
   public cartItemList : any =[]
   public productList = new BehaviorSubject<ProductInterface[]>([]);

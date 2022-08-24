@@ -7,6 +7,8 @@ import { ProductsComponent } from './products/products.component';
 import { KeysComponent } from './keys/keys.component';
 import { OrdersComponent } from './orders/orders.component';
 import {FormsModule} from "@angular/forms";
+import { AdministratorService } from './services/administrator.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,10 @@ import {FormsModule} from "@angular/forms";
         CommonModule,
         AdminRoutingModule,
         FormsModule,
-    ]
+        HttpClientModule
+  ],
+  providers: [
+    AdministratorService
+  ]
 })
 export class AdminModule { }

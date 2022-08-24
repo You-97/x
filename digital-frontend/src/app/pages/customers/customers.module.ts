@@ -19,6 +19,8 @@ import { ProductComponent } from './components/product/product.component';
 import {ContactusComponent} from "./components/contactus/contactus.component";
 import {PrivacypolicyComponent} from "./components/privacypolicy/privacypolicy.component";
 import {FreequentlyqstComponent} from "./components/fandq/freequentlyqst.component";
+import {ApiService} from "./service/api.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -45,6 +47,7 @@ import {FreequentlyqstComponent} from "./components/fandq/freequentlyqst.compone
     CommonModule,
     CustomersRoutingModule,
     FormsModule,
+    HttpClientModule
 
   ],
   bootstrap: [CustomersComponent],
@@ -53,6 +56,7 @@ import {FreequentlyqstComponent} from "./components/fandq/freequentlyqst.compone
     NavbarComponent,
     FooterComponent,
     CollectionComponent
-  ]
+  ],
+  providers:[ApiService]
 })
 export class CustomersModule { }

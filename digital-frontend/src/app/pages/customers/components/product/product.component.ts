@@ -20,12 +20,13 @@ export class ProductComponent implements OnInit {
   //value from input
   product :ProductInterface = {
     id: 0,
-    image: '',
-    title: '',
+    image: undefined,
+    name: '',
     price: 0,
     category: '',
     description: '',
-    oldPrice: 0
+    oldPrice: 0,
+    productImagePath: ''
   };
 
   constructor(public cartService: CartService) { }
