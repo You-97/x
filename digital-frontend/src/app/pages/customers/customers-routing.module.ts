@@ -26,11 +26,11 @@ const routes: Routes = [
       {
         path:"collections",
         component: CollectionsComponent
-      },
+      }/*,
       {
         path:"cart",
         component: CartComponent
-      },
+      }*/,
       {
         path:"contactus",
         component: ContactusComponent

@@ -80,8 +80,8 @@
             <h4>${{ subTotal }}</h4>
           </div>
         </div>
-        <div *ngIf="paymentMethod" class="p-4 mb-3">
-          <h4 class="mb-4">Payment Method</h4>
+        <div *ngIf="paymentMethod" >
+          <!--<h4 class="mb-4">Payment Method</h4>
           <div style="padding: 20px; background-color: white">
             <h3>Paypal</h3>
             <p>PayPal, Credit card with PayPal</p>
@@ -89,7 +89,8 @@
               <div class="p-4 rounded">PayPal</div>
               <div class="p-4 rounded">Credit card</div>
             </div>
-          </div>
+          </div>-->
+          <app-paypal></app-paypal>
         </div>
         <div *ngIf="paymentEmail" class="p-4 mb-3">
           <h4 class="mb-4">Product Delivery</h4>
@@ -121,3 +122,4 @@
     </div>
   </div>
 </section>
+

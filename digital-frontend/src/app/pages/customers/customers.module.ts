@@ -21,6 +21,8 @@ import {PrivacypolicyComponent} from "./components/privacypolicy/privacypolicy.c
 import {FreequentlyqstComponent} from "./components/fandq/freequentlyqst.component";
 import {ApiService} from "./service/api.service";
 import {HttpClientModule} from "@angular/common/http";
+import { PaypalComponent } from './components/paypal/paypal.component';
+import {NgxPayPalModule} from "ngx-paypal";
 
 
 
@@ -41,13 +43,15 @@ import {HttpClientModule} from "@angular/common/http";
     ProductComponent,
     ContactusComponent,
     PrivacypolicyComponent,
-    FreequentlyqstComponent
+    FreequentlyqstComponent,
+    PaypalComponent
   ],
   imports: [
     CommonModule,
     CustomersRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPayPalModule
 
   ],
   bootstrap: [CustomersComponent],

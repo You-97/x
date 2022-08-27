@@ -15,6 +15,7 @@ import {AuthenticationService} from "./service/authentication.service";
 import { AuthenticationGuard } from './guard/authentication.guard';
 import {UserService} from "./service/user.service";
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     AppRoutingModule,
     HttpClientModule,
     NotificationModule,
-    FormsModule
+    FormsModule,
+    NgxPayPalModule
   ],
   providers: [CollectionComponent,
     NavbarComponent,CartService,

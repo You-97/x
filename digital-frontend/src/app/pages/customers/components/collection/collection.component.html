@@ -28,9 +28,9 @@
                 >${{ item.oldPrice }}</span
               >
               <span class="d-block fw-bold">${{ item.price }}</span>
-              <!-- //hna khas ndiro API l product selecte daba tantsana l back end ikhdam -->
-              <button (click)="addToCart(item)" class="btn m-1">
-                Add to cart
+              <!-- //hna khas ndiro API l product selecte daba tantsana l back end ikhdam === (click)="addToCart(item)" -->
+              <button class="btn m-1" (click)="itemParameter(item)" routerLink="/product">
+                Buy Now
               </button>
             </div>
           </div>
