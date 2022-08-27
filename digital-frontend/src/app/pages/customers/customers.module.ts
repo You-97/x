@@ -21,7 +21,6 @@ import {PrivacypolicyComponent} from "./components/privacypolicy/privacypolicy.c
 import {FreequentlyqstComponent} from "./components/fandq/freequentlyqst.component";
 import {ApiService} from "./service/api.service";
 import {HttpClientModule} from "@angular/common/http";
-import { PaypalComponent } from './components/paypal/paypal.component';
 import {NgxPayPalModule} from "ngx-paypal";
 
 
@@ -43,8 +42,7 @@ import {NgxPayPalModule} from "ngx-paypal";
     ProductComponent,
     ContactusComponent,
     PrivacypolicyComponent,
-    FreequentlyqstComponent,
-    PaypalComponent
+    FreequentlyqstComponent
   ],
   imports: [
     CommonModule,

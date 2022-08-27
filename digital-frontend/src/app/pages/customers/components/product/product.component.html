@@ -90,7 +90,11 @@
               <div class="p-4 rounded">Credit card</div>
             </div>
           </div>-->
-          <app-paypal></app-paypal>
+          <div class="row">
+            <div class="row">
+              <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+            </div>
+          </div>
         </div>
         <div *ngIf="paymentEmail" class="p-4 mb-3">
           <h4 class="mb-4">Product Delivery</h4>
