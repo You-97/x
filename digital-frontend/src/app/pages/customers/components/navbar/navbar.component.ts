@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService} from "../../service/cart.service";
+import {AuthenticationService} from "../../../../service/authentication.service";
+import {Role} from "../../../../enum/role.enum";
 
 @Component({
   selector: 'app-navbar',
@@ -10,17 +12,25 @@ export class NavbarComponent implements OnInit {
 
   totalItem: number = 0;
 
-  constructor(public cartService: CartService ) { }
+  constructor(private cartService: CartService,
+              private authenticationService: AuthenticationService,) { }
 
   ngOnInit(): void {
     this.cartService.getProducts()
-      .subscribe(res=>{
-        this.totalItem = res.length;
-      })
+    .subscribe(res=>{
+      this.totalItem = res.length;
+    })
   }
 
-  onClick() {
-    this.totalItem += 1;
+  public get isAdmin(): boolean {
+    return this.getUserRole() === Role.USER;
+  }
+
+  private getUserRole(): string {
+    if (this.authenticationService.getUserFromLocalCache()) {
+      return this.authenticationService.getUserFromLocalCache().role;
+    }
+    return null as any;
   }
 
 

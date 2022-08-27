@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductInterface } from '../../customers/types/product.interface';
 import { AdministratorService } from "./../services/administrator.service";
+import {NotificationType} from "../../../enum/notification-type.enum";
+import {NotificationService} from "../../../service/notification.service";
 
 declare var $ : any;
 
@@ -36,7 +38,8 @@ export class ProductsComponent implements OnInit {
   keyStr: string = "";
 
 
-  constructor(private adminService: AdministratorService) {}
+  constructor(private adminService: AdministratorService,
+              private notificationService: NotificationService) {}
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -51,6 +54,7 @@ export class ProductsComponent implements OnInit {
     this.subscriptions.push(
     this.adminService.createProduct(formData).subscribe(
       (response: ProductInterface) => {
+        this.sendNotification(NotificationType.SUCCESS, `Product added successfully`);
         this.getAllProducts();
         this.conditionProduct = !this.conditionProduct;
       }
@@ -78,10 +82,10 @@ export class ProductsComponent implements OnInit {
 
   openUpdateModalWithSelectedProduct(product: any) {
     this.product = product;
-    this.str = "#editModal"
+    $('#editModal').modal('show');
   }
 
-  onDeleteproduct(id: number) {
+  onDeleteProduct(id: number) {
     this.subscriptions.push(
       this.adminService.deleteProduct(id).subscribe(
         (response: string) => {
@@ -97,7 +101,7 @@ export class ProductsComponent implements OnInit {
 
   openDeleteModalWithSelectedProduct(product: any) {
     this.product = product;
-    this.deleteStr = "#deleteModal";
+    $('#deleteModal').modal('show');
   }
 
   closeDeleteModal() {
@@ -108,17 +112,20 @@ export class ProductsComponent implements OnInit {
     const formData = this.adminService.createKeyFormData(form.value);
     this.adminService.createKey(formData).subscribe(
       (response) => {
-        console.log(response);
+        this.sendNotification(NotificationType.SUCCESS, `key for product ${form.value.productId} added successfully`);
+        $('#keyModal').modal('hide');
+        form.resetForm();
       },
-      (error) => {
-        console.log(error);
+      (err) => {
+        this.sendNotification(NotificationType.ERROR, `ERROR key for product ${form.value.productId} !!`);
+        $('#keyModal').modal('hide');
       }
     )
   }
 
   openKeyModalWithSelectedProduct(product: any) {
     this.product = product;
-    this.keyStr = "#keyModal";
+    $('#keyModal').modal('show');
   }
 
   closeKeyModal() {
@@ -128,5 +135,13 @@ export class ProductsComponent implements OnInit {
   public onProductImageChange(fileName: string, profileImage: File): void {
     this.fileName =  fileName;
     this.productImage = profileImage;
+  }
+
+  sendNotification(notificationType: NotificationType, message: string) {
+    if (message) {
+      this.notificationService.notify(notificationType, message);
+    } else {
+      this.notificationService.notify(notificationType, 'An error occurred. Please try again.');
+    }
   }
 }

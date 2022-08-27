@@ -8,26 +8,34 @@ import {CartService} from "../../service/cart.service";
 })
 export class CartComponent implements OnInit {
 
-  public products : any = [];
+  public products : any[] = [];
   public grandTotal !: number;
   Total: number =0;
+  qte: number = 0;
+
   constructor(private cartService : CartService) { }
 
   ngOnInit(): void {
-    this.cartService.getProducts()
-      .subscribe(res=>{
-        this.products = res;
-        this.grandTotal = this.cartService.getTotalPrice();
-      })
-  }
-  removeItem(item: any){
-    this.cartService.removeCartItem(item);
-  }
-  emptycart(){
-    this.cartService.removeAllCart();
+    this.products = JSON.parse(localStorage.getItem('productsList') as any);
   }
 
-  calcule(itemElement: number, value: number) {
+  removeItem(item: any){
+    const list = this.cartService.removeCartItem(item);
+    localStorage.setItem("productsList", JSON.stringify(list));
+    this.products = JSON.parse(localStorage.getItem('productsList') as any);
+  }
+
+  emptyCart(){
+    const list = this.cartService.removeAllCart();
+    localStorage.setItem("productsList", JSON.stringify(list));
+    this.products = JSON.parse(localStorage.getItem('productsList') as any);
+  }
+
+  calcul(itemElement: number, value: number) {
     this.Total=itemElement*value;
+  }
+
+  onChange(quantity: number) {
+    this.qte = quantity;
   }
 }

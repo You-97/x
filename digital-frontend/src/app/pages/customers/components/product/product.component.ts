@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {CartService} from "../../service/cart.service";
 import { ProductInterface } from '../../types/product.interface';
-import {CollectionComponent} from "../collection/collection.component";
+import {ApiService} from "../../service/api.service";
+import {NgForm} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product',
@@ -29,10 +31,16 @@ export class ProductComponent implements OnInit {
     productImagePath: ''
   };
 
-  constructor(public cartService: CartService) { }
+  constructor(public cartService: CartService,
+              private apiService: ApiService,
+              private router:Router) { }
 
   ngOnInit(): void {
-    this.product = this.cartService.getProduct();
+    if (localStorage.getItem("selectedProduct")) {
+      this.product = JSON.parse(localStorage.getItem('selectedProduct') as any);
+    } else {
+      this.router.navigateByUrl("/home");
+    }
     this.initializeData();
   }
 
@@ -68,10 +76,21 @@ export class ProductComponent implements OnInit {
     this.paymentMethod = false;
     this.paymentEmail = true;
   }
-   toPurshase() {
+
+  toPurchase() {
     this.purshase = true;
     this.paymentMethod = false;
     this.paymentEmail = false;
    }
 
+  buyProductForm(total: number, form: NgForm) {
+    this.apiService.puyProduct(total).subscribe(
+      (response: any) => {
+        window.location.href = response.redirect_url;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
 }

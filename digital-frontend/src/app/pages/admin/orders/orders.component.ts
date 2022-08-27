@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {AuthenticationService} from "../../../service/authentication.service";
 
 @Component({
   selector: 'app-orders',
@@ -9,9 +11,6 @@ export class OrdersComponent implements OnInit {
 
   today: Date = new Date();
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

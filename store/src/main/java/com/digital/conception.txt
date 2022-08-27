@@ -1,4 +1,8 @@
 
+/* PAYMENT OF PRODUCT BY PAYPAL */
+
+--> payment of product --> 
+
 // application de vente des produits digital
 
 --> Netflix

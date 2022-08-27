@@ -27,24 +27,23 @@
                     style="border-radius: 50%; border: 1px solid #ddd"
                     width="70"
                     height="70"
-                    src="{{ item.image }}"
+                    src="{{ item.product.productImagePath }}"
                     alt=""
                   />
                 </td>
-                <td style="width: 100%; margin-left: 50px">{{ item.title }}</td>
+                <td style="width: 100%; margin-left: 50px">{{ item.product.name }}</td>
                 <td style="width: 100%; margin-left: 50px">
-                  $ {{ item.price }}
+                  $ {{ item.product.price }}
                 </td>
                 <td style="width: 90%; margin-left: 50px">
                   <input
-                    (click)="calcule(item[3], quantity.valueAsNumber)"
                     type="number"
                     class="col-md-6"
-                    #quantity
-                    value="0"
+                    [value]="item.quantity"
+                    (input)="onChange(item.quantity)"
                   />
                 </td>
-                <td style="width: 90%; margin-left: 50px">$ {{ item.x }}</td>
+                <td style="width: 90%; margin-left: 50px">$ {{ qte * item.product.price }}</td>
                 <td>
                   <button (click)="removeItem(item)" class="btn btn-danger">
                     <i class="fas fa-trash-alt"></i>
@@ -58,7 +57,7 @@
           class="d-flex justify-content-end pb-3"
           style="vertical-align: middle"
         >
-          <button (click)="emptycart()" class="btn btn-danger mx-2">
+          <button (click)="emptyCart()" class="btn btn-danger mx-2">
             Empty Cart
           </button>
           <button routerLink="/collections" class="btn btn-primary mx-2">

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/keys")
+@CrossOrigin("http://localhost:4200")
 public class KeyResource {
 
     private final KeyServiceImpl keyService;

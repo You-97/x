@@ -51,7 +51,7 @@
           <button
             class="btn btn-primary mx-1 py-1 px-2"
             data-bs-toggle="modal"
-            [attr.data-bs-target]="deleteStr"
+            data-bs-target="#deleteModal"
             (click)="openDeleteModalWithSelectedProduct(item)"
           >
             <svg
@@ -74,7 +74,7 @@
           <button
             class="btn btn-info mx-1 py-1 px-2"
             data-bs-toggle="modal"
-            [attr.data-bs-target]="str"
+            data-bs-target="#editModal"
             (click)="openUpdateModalWithSelectedProduct(item)"
           >
             <svg
@@ -97,7 +97,7 @@
           <button
             class="btn btn-danger mx-1 py-1 px-2"
             data-bs-toggle="modal"
-            [attr.data-bs-target]="keyStr"
+            data-bs-target="#keyModal"
             (click)="openKeyModalWithSelectedProduct(item)"
           >
             <svg
@@ -452,7 +452,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          (click)="onDeleteproduct(product.id)"
+          (click)="onDeleteProduct(product.id)"
         >
           Yes
         </button>

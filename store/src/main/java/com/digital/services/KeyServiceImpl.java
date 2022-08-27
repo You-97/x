@@ -24,11 +24,14 @@ public class KeyServiceImpl implements KeyService {
 
     @Override
     public ProductKeyDTO addNewKeyInDatabase(ProductKeyDTO key) {
+        Product product = productRepository.findById(key.getProductId())
+                .orElseThrow(() -> new RuntimeException("Product not exist !!"));
         ProductKey productKey = ProductKey.builder()
                 .email(key.getEmail())
                 .password(key.getPassword())
                 .productKey(key.getProductKey())
                 .valid(true)
+                .product(product)
                 .validityTime(key.getValidityTime())
                 .build();
         ProductKey resultProductKey = productKeyRepository.save(productKey);

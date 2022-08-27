@@ -4,7 +4,7 @@
       <div class="col-lg-8 rounded mt-2">
         <div class="bg-light p-4">
           <h4>{{ product.name }}</h4>
-          <div
+          <!--<div
             class="d-flex justify-content-between"
             style="margin: 4px 0 4px 0"
           >
@@ -25,17 +25,15 @@
               </svg>
               5.0 (8 reviews)</span
             >
-          </div>
+          </div>-->
           <div class="row">
             <div class="col-lg-5">
-              <img src="{{ product.image }}" class="img-fluid" alt="" />
+              <img src="{{ product.productImagePath }}" class="img-fluid" alt="" />
             </div>
             <div class="col-lg-7 p-2">
-              <p>Description</p>
               <p>
                 {{ product.description }}
               </p>
-              <p>Testing</p>
             </div>
           </div>
         </div>
@@ -52,6 +50,7 @@
                 (click)="popProduct()"
                 class="input-group-text"
                 id="basic-addon1"
+                style="cursor: pointer"
                 >-</span
               >
               <input
@@ -64,7 +63,8 @@
               <span
                 (click)="addProduct()"
                 class="input-group-text"
-                id="basic-addon1"
+                style="cursor: pointer"
+                id="basic-addon2"
                 >+</span
               >
             </div>
@@ -93,27 +93,30 @@
         </div>
         <div *ngIf="paymentEmail" class="p-4 mb-3">
           <h4 class="mb-4">Product Delivery</h4>
-          <div class="input-group mb-3">
-            <input
-              type="email"
-              class="form-control"
-              placeholder="Email for invoice updates"
-              aria-label="Email"
-              aria-describedby="basic-addon1"
-            />
-          </div>
+          <form #buyProduct="ngForm" (click)="buyProductForm(subTotal, buyProduct)">
+            <div class="input-group mb-3">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email for invoice updates"
+                aria-label="Email"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <div class="d-flex justify-content-center">
+              <button (click)="toPayment()" class="butn mx-2">Back</button>
+              <button type="submit" class="butn mx-2">Pay</button>
+            </div>
+          </form>
         </div>
         <div *ngIf="purshase" class="d-grid gap-2">
           <button (click)="toPayment()" class="butn">Buy now</button>
         </div>
         <div *ngIf="paymentMethod" class="d-flex justify-content-center">
-          <button (click)="toPurshase()" class="butn mx-2">Back</button>
+          <button (click)="toPurchase()" class="butn mx-2">Back</button>
           <button (click)="toPaymentEmail()" class="butn mx-2">Continue</button>
         </div>
-        <div *ngIf="paymentEmail" class="d-flex justify-content-center">
-          <button (click)="toPayment()" class="butn mx-2">Back</button>
-          <button class="butn mx-2">Pay</button>
-        </div>
+
       </div>
     </div>
   </div>

@@ -61,18 +61,26 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO updateProduct(ProductDTO dto) throws IOException {
-        Product product = new Product();
-        product.setId(null);
+        Product product = productRepository.findById(dto.getId())
+                .orElseThrow(()-> new RuntimeException("Product not exist"));
         product.setName(dto.getName());
         product.setPrice(dto.getPrice());
         product.setType(dto.getType());
+        product.setDescription(dto.getDescription());
+        product.setOldPrice(dto.getOldPrice());
         Product savedProduct = productRepository.save(product);
-        saveProfileImage(savedProduct, dto.getImage());
+        if (dto.getImage() != null) {
+            saveProfileImage(savedProduct, dto.getImage());
+        }
 
         return ProductDTO.builder()
+                .id(savedProduct.getId())
+                .productImagePath(savedProduct.getImagePath())
                 .name(savedProduct.getName())
                 .type(savedProduct.getType())
                 .price(savedProduct.getPrice())
+                .oldPrice(savedProduct.getOldPrice())
+                .description(savedProduct.getDescription())
                 .build();
     }
 
@@ -80,6 +88,8 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDTO> getAllProducts() {
         return productRepository.findAll().stream().map(s-> {
             return ProductDTO.builder()
+                    .id(s.getId())
+                    .oldPrice(s.getOldPrice())
                     .name(s.getName())
                     .price(s.getPrice())
                     .type(s.getType())

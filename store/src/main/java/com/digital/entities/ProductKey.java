@@ -20,7 +20,7 @@ public class ProductKey implements Serializable {
     private String email;
     private String password;
     private Boolean valid;
-    private Date validityTime; // TODO verify this
+    private Double validityTime; // TODO verify this
 
     @ManyToOne
     private Product product;

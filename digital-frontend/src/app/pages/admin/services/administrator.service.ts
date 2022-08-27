@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductInterface } from '../../customers/types/product.interface';
+import {KeyInterface} from "../../customers/types/key.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,8 @@ export class AdministratorService {
     return this.http.put<ProductInterface>("http://localhost:8085/products/update", formData);
   }
 
-  createKey(form: FormData): Observable<any> {
-    return this.http.post<any>("http://localhost:8085/keys", form);
+  createKey(form: FormData): Observable<KeyInterface> {
+    return this.http.post<KeyInterface>("http://localhost:8085/keys", form);
   }
 
   public createProductFormData(product: any, profileImage: File): FormData {

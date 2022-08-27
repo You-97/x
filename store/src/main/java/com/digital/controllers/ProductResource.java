@@ -37,11 +37,6 @@ public class ProductResource {
         return ResponseEntity.ok().body(productService.getAllProducts());
     }
 
-    @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO dto) throws IOException {
-        return ResponseEntity.ok().body(productService.createProduct(dto));
-    }
-
     @PostMapping(value = "/new", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ProductDTO> createSecondProduct(@RequestParam(value = "image")MultipartFile image,
                                                           @RequestParam("name") String name,
@@ -66,13 +61,35 @@ public class ProductResource {
         return Files.readAllBytes(Paths.get(USER_FOLDER + username + FORWARD_SLASH + fileName));
     }
 
-    @PutMapping()
+    /*@PutMapping("/update")
     public ResponseEntity<ProductDTO> updateProduct(ProductDTO dto) throws IOException {
-        return ResponseEntity.ok().body(productService.createProduct(dto));
+        return ResponseEntity.ok().body(productService.updateProduct(dto));
+    }*/
+
+    @PutMapping("/update")
+    public ResponseEntity<ProductDTO> updateSecondProduct(@RequestParam(value = "image", required = false)MultipartFile image,
+                                                          @RequestParam("name") String name,
+                                                          @RequestParam("id") long id,
+                                                          @RequestParam("price") Double price,
+                                                          @RequestParam("oldPrice") Double oldPrice,
+                                                          @RequestParam("description") String description,
+                                                          @RequestParam("type") String type) throws IOException {
+        ProductDTO product = ProductDTO.builder()
+                .id(id)
+                .name(name)
+                .description(description)
+                .price(price)
+                .oldPrice(oldPrice)
+                .type(type)
+                .image(image)
+                .build();
+        return ResponseEntity.ok().body(productService.updateProduct(product));
     }
 
+
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable("id") long id) {
+    public String deleteProduct(@PathVariable("id") long id) {
         productService.deleteProduct(id);
+        return "product deleted";
     }
 }

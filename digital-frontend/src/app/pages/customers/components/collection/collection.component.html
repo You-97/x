@@ -13,7 +13,7 @@
           <div>
             <div class="special-img position-relative">
               <img
-                (click)="itemParametre(item)"
+                (click)="itemParameter(item)"
                 src="{{ item?.productImagePath }}"
                 class="w-100"
                 height="250"
@@ -29,7 +29,7 @@
               >
               <span class="d-block fw-bold">${{ item.price }}</span>
               <!-- //hna khas ndiro API l product selecte daba tantsana l back end ikhdam -->
-              <button (click)="addtocart(item)" class="btn m-1">
+              <button (click)="addToCart(item)" class="btn m-1">
                 Add to cart
               </button>
             </div>

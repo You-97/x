@@ -20,4 +20,8 @@ export class ApiService {
   findAllProducts(): Observable<ProductInterface[]> {
     return this.http.get<ProductInterface[]>("http://localhost:8085/products");
   }
+
+  puyProduct(sum: number): Observable<any> {
+    return this.http.post(`http://localhost:8085/paypal/make/payment?sum=${sum}`, {});
+  }
 }

@@ -14,6 +14,6 @@ public class ProductKeyDTO {
     private String email;
     private String password;
     private Double price;
-    private Date validityTime;
+    private Double validityTime;
     private long productId;
 }
